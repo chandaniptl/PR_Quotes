@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            filter: blur(8px);
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            max-width: 600px;
+            min-height: 250px;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px 30px;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid #6d5da7;
+        }
+
+        .quote-text {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            font-weight: 600;
+            color: #5e8ab6;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Inspirational Quotes</h1>
+    <div class="card" id="quote-box">
+        <img src="" alt="Author" class="author-image" id="author-img">
+        <div class="quote-text" id="quote-text"></div>
+        <div class="quote-author" id="quote-author"></div>
+    </div>
+    <script>
+        const quotes = [
+            {
+                "author": "Albert Einstein",
+                "quote": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg"
+            },
+            {
+                "author": "Maya Angelou",
+                "quote": "You will face many defeats in life, but never let yourself be defeated.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg"
+            },
+            {
+                "author": "Walt Disney",
+                "quote": "The way to get started is to quit talking and begin doing.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mark_Twain_1907.jpg/960px-Mark_Twain_1907.jpg"
+            },
+            {
+                "author": "Steve Jobs",
+                "quote": "Innovation distinguishes between a leader and a follower.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mark_Twain_photo_portrait%2C_Feb_7%2C_1871%2C_cropped_Repair.jpg/500px-Mark_Twain_photo_portrait%2C_Feb_7%2C_1871%2C_cropped_Repair.jpg"
+            },
+            {
+                "author": "Dr. Seuss",
+                "quote": "Don't cry because it's over, smile because it happened.",
+                "image": " https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Mark_Twain_from_American_Portraits.jpg/1200px-Mark_Twain_from_American_Portraits.jpg"
+            },
+            {
+                "author": "Oscar Wilde",
+                "quote": "Be yourself; everyone else is already taken.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mark_Twain_photo_portrait%2C_Feb_7%2C_1871%2C_cropped_Repair.jpg/500px-Mark_Twain_photo_portrait%2C_Feb_7%2C_1871%2C_cropped_Repair.jpg"
+            },
+            {
+                "author": "Eleanor Roosevelt",
+                "quote": "The future belongs to those who believe in the beauty of their dreams.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Mark_Twain_by_Ernest_H_Mills%2C_c1895.jpg"
+            },
+            {
+                "author": "Mark Twain",
+                "quote": "The secret of getting ahead is getting started.",
+                "image": " https://upload.wikimedia.org/wikipedia/commons/8/87/Mark_Twain_%28Samuel_Langhorne_Clemens%29.jpg"
+            },
+            {
+                "author": "Nelson Mandela",
+                "quote": "It always seems impossible until it’s done.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Samuel_Langhorne_Clemens%2C_aka_Mark_Twain%2C_head-and-shoulders_portrait%2C_facing_front%29_-_Abdullah_Fr%C3%A8res_Phot_LCCN2004678589.jpg"
+            },
+            {
+                "author": "Confucius",
+                "quote": "It does not matter how slowly you go as long as you do not stop.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mark_Twain_by_GH_Jones%2C_1850_-_retouched.jpg"
+            }
+        ];
+
+        let current = 0;
+
+        function displayQuote(index) {
+            document.getElementById("quote-text").textContent = `"${quotes[index].quote}"`;
+            document.getElementById("quote-author").textContent = `— ${quotes[index].author}`;
+            document.getElementById("author-img").src = quotes[index].image;
+        }
+
+        displayQuote(current);
+
+        setInterval(() => {
+            current = (current + 1) % quotes.length;
+            displayQuote(current);
+        }, 5000);
+
+    </script>
+</body>
+</html>
