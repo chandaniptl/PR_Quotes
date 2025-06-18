@@ -52,7 +52,7 @@ To run this project locally:
 
     Clone the Repository
 
-
+https://github.com/chandaniptl/PR_Quotes
 
 Navigate to the Project Folder
 
